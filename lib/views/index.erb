@@ -10,10 +10,13 @@
     	<th>Author</th>
        	<th>Content</th>
     </table>
+    <%i=1%>
     <% gossips.each do |gossip| %>
     	<table>
 		      <td><%= gossip.author %></td>
-          <td><%= gossip.content %></td>          	
+          <td><%= gossip.content %></td>  
+          <td><a href="/gossips/<%=i%>/">lien</a></td>
+          <%i+=1%>         	
     	</table>
       <% end %>
   </body>
