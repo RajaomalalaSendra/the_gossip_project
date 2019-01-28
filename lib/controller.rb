@@ -9,6 +9,10 @@ class ApplicationController < Sinatra::Base
   	erb :new_gossip
   end
 
+  get '/gossips/:id/' do 
+  	Gossip.find(id)
+  end
+
   post '/gossips/new/' do
   	Gossip.new("#{params["gossip_author"]}", "#{params["gossip_content"]}").save
   	puts "Salut, je suis dans le serveur"
