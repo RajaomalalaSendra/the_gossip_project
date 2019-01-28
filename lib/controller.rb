@@ -2,7 +2,7 @@ require 'gossip'
 
 class ApplicationController < Sinatra::Base
   get '/' do
-	erb :index
+	erb :index, locals: {gossips: Gossip.all}
   end
 
   get '/gossips/new/' do
@@ -14,9 +14,5 @@ class ApplicationController < Sinatra::Base
   	puts "Salut, je suis dans le serveur"
 	puts "Ceci est mon super params : #{params}"
 	redirect "/"
-  end
-
-  get '/' do
-    erb :index, locals: {gossips: Gossip.all}
   end
 end

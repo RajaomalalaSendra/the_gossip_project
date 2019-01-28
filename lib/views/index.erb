@@ -6,11 +6,15 @@
     <h1>Mon super site de gossip, du dossier views !</h1>
     <p>Hey courage</p>
     <a href="/gossips/new/">nouveau gossip</a>
+    <table>
+    	<th>Author</th>
+       	<th>Content</th>
+    </table>
     <% gossips.each do |gossip| %>
-        <p>
-          <%= gossip.author %><br/>
-          <%= gossip.content %>
-        </p>
+    	<table>
+			<td><%= gossip.author %></td>
+            <td><%= gossip.content %></td>          	
+    	</table>
       <% end %>
   </body>
 </html>
