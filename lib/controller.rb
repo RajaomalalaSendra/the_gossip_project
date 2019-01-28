@@ -9,9 +9,9 @@ class ApplicationController < Sinatra::Base
   	erb :new_gossip
   end
 
-  get '/gossips/:id/' do |id|
-  	  Gossip.find("#{params[:id]}")
-  	  erb :gossips_show
+  get '/gossips/:id/' do |n| 
+  	  Gossip.new("", "").find(n)
+  	  erb :gossips_show, locals: {find_gossips: Gossip.new("", "").find(n)}
   end
 
   post '/gossips/new/' do

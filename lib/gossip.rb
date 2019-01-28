@@ -1,8 +1,9 @@
 require 'csv'
 
 class Gossip
-	attr_accessor :author, :content
+	attr_accessor :author, :content, :all_gossips, :n_all_gossips
 	attr_reader :id
+	
 	def initialize(author, content)
 
 		@author = author
@@ -20,15 +21,20 @@ class Gossip
         CSV.read("./db/gossip.csv").each do |csv_line|
         @all_gossips << Gossip.new(csv_line[0], csv_line[1])
        end
-       @id = @all_gossips.length + 1
       return @all_gossips
 	end
-	def self.find(id)
-		find_id = id.to_i
-		@all_gossips.each do |item|
-      	  if item.id == find_id
-            return item
-          end
+	def find(n)
+		number = Array.new
+		csv_get = Array.new
+		file = CSV.read("./db/gossip.csv")
+			i = 1
+		file.each do |ligne|
+		  number << i
+		  csv_get << ligne 
+			i += 1
 		end
+		last_time = number.zip(csv_get)
+		val = last_time[n.to_i - 1]
+		return val
 	end
 end
