@@ -1,3 +1,4 @@
+require 'gossip'
 
 class ApplicationController < Sinatra::Base
   get '/' do
@@ -9,6 +10,13 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/gossips/new/' do
-  	puts "This is just a sample for the post"
+  	Gossip.new("#{params["gossip_author"]}", "#{params["gossip_content"]}").save
+  	puts "Salut, je suis dans le serveur"
+	puts "Ceci est mon super params : #{params}"
+	redirect "/"
+  end
+
+  get '/' do
+    erb :index, locals: {gossips: Gossip.all}
   end
 end
