@@ -27,7 +27,7 @@ class Gossip
 		number = Array.new
 		csv_get = Array.new
 		file = CSV.read("./db/gossip.csv")
-			i = 1
+		i = 1
 		file.each do |ligne|
 		  number << i
 		  csv_get << ligne 
